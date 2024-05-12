@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 설정파일을 뜻하는 persistence 엘리먼트로 XML 네임스페이스와 사용할 버전을 지정 -->
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.2">
+
+    <!-- persistence.xml should be put inside an directory called META-INF under the root of the classpath -->
+    <!--
+        JPA가 설정 정보를 담고 있는 persistence.xml을 인식하게 하기 위해서는 반드시 classpath에 등록된 경로 아래의 META-INF 폴더 안에 작성해야 한다.
+      -->
+
+    <!-- 영속성 유닛(persistence-unit_은 연결할 데이터베이스당 하나의 영속성 유닛을 등록한다. name속성을 통해 고유 이름 부여 -->
+    <persistence-unit name="jpatest">
+        <properties>
+
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.user" value="test"/>
+            <property name="jakarta.persistence.jdbc.password" value="test"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/menudb"/>
+
+            <property name="hibernate.show.sql" value="true"/>
+            <property name="hibernate.format.sql" value="true"/>
+
+
+        </properties>
+    </persistence-unit>
+
+</persistence>
