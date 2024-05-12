@@ -9,8 +9,10 @@
 
     <!-- 영속성 유닛(persistence-unit_은 연결할 데이터베이스당 하나의 영속성 유닛을 등록한다. name속성을 통해 고유 이름 부여 -->
     <persistence-unit name="jpatest">
-        <properties>
+        <!-- 생성한 엔티티 등록 필요 -->
+        <class>com.greedy.section01.entity.Member</class>
 
+        <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.user" value="test"/>
             <property name="jakarta.persistence.jdbc.password" value="test"/>
