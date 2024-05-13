@@ -59,4 +59,10 @@ public class A_EntityManagerLifeCycleTest
         // 환경 종료
         entityManagerFactory.close();
     }
+
+    @AfterEach
+    public void closeManager(){
+        // 엔티티 매니저 종료
+        entityManager.close();
+    }
 }
