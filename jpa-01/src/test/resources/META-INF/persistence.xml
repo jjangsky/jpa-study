@@ -8,7 +8,7 @@
 
     <!-- 영속성 유닛(persistence-unit_은 연결할 데이터베이스당 하나의 영속성 유닛을 등록한다. name속성을 통해 고유 이름 부여 -->
     <persistence-unit name="jpatest">
-        <class>com.greedy.section02.crud.Menu</class>
+        <class>com.greedy.section03.persistencecontext.Menu</class>
         <properties>
 
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
