@@ -63,6 +63,7 @@ public class EntityMappingTests {
 
         // then
         Member foundMember = entityManager.find(Member.class, 1);
+        foundMember.setNickName("사용자01변경");
         assertEquals(member.getMemberNo(), foundMember);
 
     }

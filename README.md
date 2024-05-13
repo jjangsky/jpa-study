@@ -1,7 +1,7 @@
 # jpa-study
 
 JPA 기초 개념 정리
-노션 : https://www.notion.so/jjangsky/JPA-6c7ebcc650b546aeb3a8adb396274594
+노션 : https://jjangsky.notion.site/JPA-6c7ebcc650b546aeb3a8adb396274594
 
 ## JPA-01
 
