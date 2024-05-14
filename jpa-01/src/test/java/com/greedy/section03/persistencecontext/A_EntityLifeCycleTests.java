@@ -106,4 +106,44 @@ public class A_EntityLifeCycleTests {
 
         assertEquals("아메리카노2", foundMenu.getMenuName());
     }
+
+    // 준영속 테스트
+    @Test
+    public void persistenceContextRemoveTest(){
+        Menu menu1 = entityManager.find(Menu.class, 11);
+        Menu menu2 = entityManager.find(Menu.class, 12);
+
+        // 준영속 == 비영속도 아닌 영속도 아닌 상태
+
+        /*
+        * 영속성 컨텍스트가 관리하던 엔티티 객체를 관리하지 않는 상태가 되게 한 것을 준영속 상태라고 한다.
+        * detach 가 준영속 상태를 만들기 위한 메소드.
+         */
+        entityManager.detach(menu2);
+
+        menu1.setMenuName("아메리카노2");
+        menu2.setMenuName("아메리카노3");
+
+        assertEquals("아메리카노2", entityManager.find(Menu.class, 11).getMenuName());
+        assertEquals("아메리카노2", entityManager.find(Menu.class, 12).getMenuName());
+        // 12번은 영속 상태가 아니므로 다시 DB에서 조회
+
+    }
+
+    // 준영속 Clear
+    @Test
+    public void persistenceContextClearTest(){
+        Menu menu1 = entityManager.find(Menu.class, 11);
+        Menu menu2 = entityManager.find(Menu.class, 12);
+
+        /* 영속성 컨텍스트로 관리되던 엔티티 객체들을 모두 비영속 상태로 변경*/
+        entityManager.clear();
+
+        menu1.setMenuName("아메리카노2");
+        menu2.setMenuName("아메리카노2");
+
+        // DB에서 새로 조회 해온 객체를 영속 상태로 두기 때문에 전혀 다른 결과로 나옴
+        assertEquals("아메리카노2", entityManager.find(Menu.class, 11).getMenuName());
+        assertEquals("아메리카노2", entityManager.find(Menu.class, 12).getMenuName());
+    }
 }
