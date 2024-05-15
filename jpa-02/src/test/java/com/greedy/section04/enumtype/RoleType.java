@@ -1,4 +1,5 @@
 package com.greedy.section04.enumtype;
 
-public class RoleType {
+public enum RoleType {
+    ADMIN, MANAGER
 }
