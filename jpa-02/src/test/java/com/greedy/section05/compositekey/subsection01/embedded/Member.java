@@ -11,10 +11,8 @@ public class Member {
     // 복합키 예제
     @EmbeddedId
     private MemberPk memberPK;
-
     @Column(name="phone")
     private String phone;
-
     @Column(name="address")
     private String address;
 
