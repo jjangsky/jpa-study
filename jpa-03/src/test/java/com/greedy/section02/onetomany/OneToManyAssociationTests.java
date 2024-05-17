@@ -41,6 +41,7 @@ public class OneToManyAssociationTests {
     public void oneToManyMappingSelectTest(){
         int categoryCode = 10;
         CategoryAndMenu categoryAndMenu = entityManager.find(CategoryAndMenu.class, categoryCode);
+        // 10번 카테고리에 담긴 메뉴들을 전부 담음
         assertNotNull(categoryAndMenu);
         System.out.println(categoryAndMenu);
     }
