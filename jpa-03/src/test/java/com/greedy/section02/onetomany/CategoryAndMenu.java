@@ -22,5 +22,46 @@ public class CategoryAndMenu {
     @OneToMany
     private List<Menu> menuList;
 
+    public CategoryAndMenu(int categoryCode, String categoryName, Integer refCategoryCode, List<Menu> menuList) {
+        this.categoryCode = categoryCode;
+        this.categoryName = categoryName;
+        this.refCategoryCode = refCategoryCode;
+        this.menuList = menuList;
+    }
 
+    public CategoryAndMenu() {
+
+    }
+
+    public int getCategoryCode() {
+        return categoryCode;
+    }
+
+    public void setCategoryCode(int categoryCode) {
+        this.categoryCode = categoryCode;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public Integer getRefCategoryCode() {
+        return refCategoryCode;
+    }
+
+    public void setRefCategoryCode(Integer refCategoryCode) {
+        this.refCategoryCode = refCategoryCode;
+    }
+
+    public List<Menu> getMenuList() {
+        return menuList;
+    }
+
+    public void setMenuList(List<Menu> menuList) {
+        this.menuList = menuList;
+    }
 }
