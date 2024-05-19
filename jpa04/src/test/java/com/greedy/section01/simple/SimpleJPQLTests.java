@@ -3,6 +3,8 @@ package com.greedy.section01.simple;
 import jakarta.persistence.*;
 import org.junit.jupiter.api.*;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SimpleJPQLTests {
@@ -75,5 +77,16 @@ public class SimpleJPQLTests {
         System.out.println("resultMenuName : " + resultMenuName);
 
         assertEquals("치즈볼", resultMenuName);
+    }
+
+    @Test // 다중행 다중열 조회 테스트 - TypedQuery
+    public void TypeQueryMultiResultTest() {
+        String jpql = "SELECT m.menuCode, m.menuName FROM menu m";
+        TypedQuery<Menu> query = entityManager.createQuery(jpql, Menu.class);
+
+       List<Menu> foundMenuList = query.getResultList();
+        System.out.println("foundMenuList : " + foundMenuList);
+
+        assertEquals(5, foundMenuList.size());
     }
 }
