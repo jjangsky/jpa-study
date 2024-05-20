@@ -1,6 +1,7 @@
 package com.example.springdatajpa.menu.service;
 
 import com.example.springdatajpa.menu.dto.MenuDto;
+import com.example.springdatajpa.menu.entity.Menu;
 import com.example.springdatajpa.menu.repository.CategoryRepository;
 import com.example.springdatajpa.menu.repository.MenuRepository;
 import org.modelmapper.ModelMapper;
@@ -25,6 +26,10 @@ public class MenuService {
     }
 
     public MenuDto findMenuByCode(int menuCode) {
-        return null;
+
+        // 메소드의 반환 객체는 옵셔널 타입
+        Menu menu = menuRepository.findById(menuCode).orElseThrow(IllegalArgumentException::new);
+        // Menu Entity를 MenuDto로 변환(ModelMapper 사용)
+        return mapper.map(menu, MenuDto.class);
     }
 }
