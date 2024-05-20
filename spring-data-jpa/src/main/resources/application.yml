@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+#db Config - MariaDB
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/test
+    username: root
+    password: root
+
+  jpa:
+    generate-ddl : false  # true면 테이블 생성
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate:
+        '[format_sql]': true
