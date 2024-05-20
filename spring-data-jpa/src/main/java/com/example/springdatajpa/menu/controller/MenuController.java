@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/menu")
 public class MenuController {
@@ -22,11 +24,16 @@ public class MenuController {
 
     @GetMapping("/{menuCode}")
     public String findMenuByCode(@PathVariable int menuCode , Model model){
-
         MenuDto menu = menuService.findMenuByCode(menuCode);
-
         model.addAttribute("menu", menu);
-
         return "menu/detail";
     }
+
+    @GetMapping("/list")
+    public String findAllMenus(Model model){
+
+        List<MenuDto> menuList = menuService.findAllMenus();
+        return "menu/list";
+    }
+
 }
