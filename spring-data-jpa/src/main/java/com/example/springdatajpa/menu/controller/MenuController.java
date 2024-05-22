@@ -1,5 +1,7 @@
 package com.example.springdatajpa.menu.controller;
 
+import com.example.springdatajpa.common.Pagination;
+import com.example.springdatajpa.common.PagingButtonInfo;
 import com.example.springdatajpa.menu.dto.MenuDto;
 import com.example.springdatajpa.menu.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -58,9 +61,28 @@ public class MenuController {
          * 정렬 바식 : getSort()
          * 여러 페이지 중 현재 인덱스 : getNumber()
          */
+        PagingButtonInfo paging = Pagination.getPagingButtonInfo(menuPage);
+        model.addAttribute("paging", paging); // 페이징 관련 정보
+        model.addAttribute("menuPage", menuPage);
 
 
         return "menu/list";
     }
+
+    // 요청 메소드를 `void` 형으로 정의하면 요청 이름 자체가 반환 주소가 됨
+    // /menu/querymethod 로 페이지 이동 처리 됨
+    @GetMapping("/querymethod")
+    public void queryMethodPage(){}
+
+
+    // 조건 검색
+    @GetMapping("/search")
+    public String findMenuPrice(@RequestParam int menuPrice, Model model){
+
+        List<MenuDto> menuList = menuService.findMenuByPrice(menuPrice);
+        model.addAttribute("menuList", menuList);
+        return "menu/searchResult";
+    }
+
 
 }
