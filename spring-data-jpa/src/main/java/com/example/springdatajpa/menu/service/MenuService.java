@@ -1,6 +1,8 @@
 package com.example.springdatajpa.menu.service;
 
+import com.example.springdatajpa.menu.dto.CategoryDto;
 import com.example.springdatajpa.menu.dto.MenuDto;
+import com.example.springdatajpa.menu.entity.Category;
 import com.example.springdatajpa.menu.entity.Menu;
 import com.example.springdatajpa.menu.repository.CategoryRepository;
 import com.example.springdatajpa.menu.repository.MenuRepository;
@@ -71,4 +73,15 @@ public class MenuService {
 
         return menuList.stream().map(menu -> mapper.map(menu, MenuDto.class)).collect(Collectors.toList());
     }
+
+
+
+    // 카테고리 조회(JPQL 사용)
+    public List<CategoryDto> findAllCategories() {
+        List<Category> categoryList = categoryRepository.findAllCategories();
+
+        return categoryList.stream().map(category -> mapper.map(category, CategoryDto.class)).collect(Collectors.toList());
+    }
+
+
 }
