@@ -103,11 +103,11 @@ public class MenuController {
 
 
     // DML 작업
-//    @PostMapping("/regist")
-//    public String registMenu(MenuDto menuDto){
-//        menuService.registMenu(menuDto);
-//        return "redirect:/menu/list";
-//    }
+    @PostMapping("/regist")
+    public String registMenu(MenuDto menuDto){
+        menuService.registMenu(menuDto);
+        return "redirect:/menu/list";
+    }
 
 
 }

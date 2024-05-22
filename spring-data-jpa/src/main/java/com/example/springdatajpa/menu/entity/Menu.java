@@ -1,15 +1,13 @@
 package com.example.springdatajpa.menu.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @ToString
 @Table(name = "tbl_menu")
 public class Menu {
