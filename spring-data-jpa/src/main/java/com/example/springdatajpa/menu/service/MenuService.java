@@ -91,4 +91,22 @@ public class MenuService {
     public void registMenu(MenuDto menuDto) {
         menuRepository.save(mapper.map(menuDto, Menu.class));
     }
+
+
+    // modify
+    @Transactional
+    public void modifyMenu(MenuDto menuDto) {
+
+        // modify는 객체를 수정하면 끝
+        Menu menu = menuRepository.findById(menuDto.getMenuCode()).orElseThrow(IllegalArgumentException::new);
+        menu.setMenuName(menuDto.getMenuName()); // 불러온 객체를 수정하면 DB에 반영됨(반영 시점은  flush 처리할 때)
+
+    }
+
+
+    // delete
+    @Transactional
+    public void deleteMenu(int menuCode) {
+        menuRepository.deleteById(menuCode);
+    }
 }
