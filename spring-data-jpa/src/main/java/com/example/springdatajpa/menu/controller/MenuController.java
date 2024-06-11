@@ -46,19 +46,6 @@ public class MenuController {
     public String findAllMenusPage(@PageableDefault Pageable pageable, Model model){
 
         Page<MenuDto> menuPage = menuService.findAllMenuList(pageable);
-
-        /**
-         * Page 객체 메소드
-         * 조회한 내용 목록 : getContent()
-         * 총 페이지 수 : getTotalPages()
-         * 총 메뉴 수 : getTotalElements()
-         * 해당 페이지에 표시 될 요소 수 : getSize()
-         * 해당 페이지에 실제 요소 수 : getNumberOfElements()
-         * 첫 페이지 여부 : isFirst()
-         * 마지막 페이지 여부 : isLast()
-         * 정렬 바식 : getSort()
-         * 여러 페이지 중 현재 인덱스 : getNumber()
-         */
         PagingButtonInfo paging = Pagination.getPagingButtonInfo(menuPage);
         model.addAttribute("paging", paging); // 페이징 관련 정보
         model.addAttribute("menuPage", menuPage);
